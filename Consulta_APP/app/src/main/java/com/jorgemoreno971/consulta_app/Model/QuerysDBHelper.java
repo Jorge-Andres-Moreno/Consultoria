@@ -57,7 +57,8 @@ public class QuerysDBHelper extends SQLiteOpenHelper {
      * @return
      */
     public Cursor getAllQuerys(SQLiteDatabase db){
-        return db.rawQuery("SELECT * FROM "+ QuerysContract.QueryEntry.TABLE_NAME,null);
+        return db.rawQuery("SELECT * FROM "+
+                QuerysContract.QueryEntry.TABLE_NAME, null);
     }
 
     /**

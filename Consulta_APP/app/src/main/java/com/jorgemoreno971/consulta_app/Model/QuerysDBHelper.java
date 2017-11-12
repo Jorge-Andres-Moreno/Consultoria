@@ -17,13 +17,22 @@ public class QuerysDBHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+    public long saveQuery(Query query) {
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        return sqLiteDatabase.insert(
+                QuerysContract.QueryEntry.TABLE_NAME,
+                null,query.toContentValues());
+    }
+
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("CREATE TABLE " + QuerysContract.QueryEntry.TABLE_NAME + " ("
+        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXIST" + QuerysContract.QueryEntry.TABLE_NAME + " ("
                 + QuerysContract.QueryEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + QuerysContract.QueryEntry.ID + " TEXT NOT NULL,"
                 + QuerysContract.QueryEntry.NAME + " TEXT NOT NULL,"
                 + QuerysContract.QueryEntry.DESCRIPTION + " TEXT NOT NULL,"
+                + QuerysContract.QueryEntry.DATE + " TEXT NOT NULL,"
+                + QuerysContract.QueryEntry.STATUS + " TEXT NOT NULL,"
                 + "UNIQUE (" + QuerysContract.QueryEntry.ID + "))");
     }
 

@@ -109,7 +109,7 @@ public class Query {
 
     /**
      *
-     * 
+     *
      * @return
      */
     public ContentValues toContentValues() {

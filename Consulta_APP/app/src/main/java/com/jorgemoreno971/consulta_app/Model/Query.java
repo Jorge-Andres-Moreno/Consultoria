@@ -9,9 +9,9 @@ import java.util.Date;
 public class Query {
 
     /**
-     * 
+     *
      */
-    private String id;
+    private int id;
 
     /**
      *
@@ -34,10 +34,10 @@ public class Query {
      * @param name
      * @param description
      */
-    public Query(String name, String description){
+    public Query(int id,String name, String description){
         this.name = name;
         this.date = new Date();
-        this.id = ""+date.getDay()+date.getHours()+date.getMinutes()+date.getSeconds();
+        this.id = id;
         this.description = description;
     }
 
@@ -60,7 +60,7 @@ public class Query {
      *
      * @return
      */
-    public String getId() {
+    public int getId() {
         return id;
     }
 

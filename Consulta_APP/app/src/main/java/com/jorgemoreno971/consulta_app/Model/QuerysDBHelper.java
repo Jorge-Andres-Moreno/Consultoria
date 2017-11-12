@@ -35,8 +35,7 @@ public class QuerysDBHelper extends SQLiteOpenHelper {
      * @return
      */
     public long saveQuery(Query query) {
-        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
-        return sqLiteDatabase.insert(
+        return getWritableDatabase().insert(
                 QuerysContract.QueryEntry.TABLE_NAME,
                 null,query.toContentValues());
     }
@@ -53,11 +52,10 @@ public class QuerysDBHelper extends SQLiteOpenHelper {
 
     /**
      *
-     * @param db
      * @return
      */
-    public Cursor getAllQuerys(SQLiteDatabase db){
-        return db.rawQuery("SELECT * FROM "+
+    public Cursor getAllQuerys1(){
+        return getWritableDatabase().rawQuery("SELECT * FROM "+
                 QuerysContract.QueryEntry.TABLE_NAME, null);
     }
 
